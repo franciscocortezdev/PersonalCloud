@@ -2,6 +2,8 @@ import express, { Application, Request, Response, Router } from "express"
 import dotenv from "dotenv"
 dotenv.config()
 import cors from "cors"
+import { IndexRoutes } from "./routes"
+
 
 class AppServer {
   PORT = process.env.PORT
@@ -26,11 +28,11 @@ class AppServer {
   }
 
   private routes() {
-    this.app.get("/", async (req: Request, res: Response) => {
-      res.status(200).send("<H1>HELLO WOLRD</H1>")
-    })
+    const indexRoutes = new IndexRoutes()
+    console.log('indexRoutes', indexRoutes.getRoutes())
+
+    this.app.use("/", indexRoutes.getRoutes())
   }
 }
-
 
 AppServer.start()
