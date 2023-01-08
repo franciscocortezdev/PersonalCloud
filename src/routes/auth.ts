@@ -1,19 +1,16 @@
 import { Router } from "express"
 
-
 export class auth {
   router = Router()
 
-  static getRoute(){
-    const Auth = new auth()
-
-    Auth.router.get("/register", (req, res)=>{
-      res.send('Register')
+  getRoutes() {
+    this.router.get("/register", (req, res) => {
+      res.send("Register")
     })
-    Auth.router.get("/login", (req, res)=>{
-      res.send('Login')
+    this.router.get("/login", (req, res) => {
+      res.send("Login")
     })
 
-    return Auth.router
+    return this.router
   }
 }
