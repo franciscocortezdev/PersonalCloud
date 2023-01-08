@@ -21,7 +21,6 @@ export class IndexRoutes{
 
     this.filesRoutes.forEach(file=>{
       import(`./${file}`).then(moduleRoute=>{
-        //console.log('console', moduleRoute[`${file}`].getRoute())
         this.router.use(`/${file}`, moduleRoute[`${file}`].getRoute())
       })
     })
