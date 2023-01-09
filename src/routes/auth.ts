@@ -1,15 +1,22 @@
 import { Router } from "express"
+import { authController } from "../controllers/auth"
 
 export class auth {
   router = Router()
+  authCtl: authController
+
+  constructor(authController: authController) {
+    this.authCtl = authController
+
+  }
 
   getRoutes() {
-    this.router.get("/register", (req, res) => {
-      res.send("Register")
-    })
-    this.router.get("/login", (req, res) => {
-      res.send("Login")
-    })
+
+    const authctl: authController = new authController()
+
+    this.router.get("/login", authctl.loginCtl)
+
+    this.router.get("/register", authctl.registerCtl)
 
     return this.router
   }

@@ -1,12 +1,10 @@
-import { IndexRoutes } from "./routes"
-import { AppServer } from "./server"
 import { authController } from "./controllers/auth"
+import { routeInterface } from "./interfaces/routeInterface"
 import { auth } from "./routes/auth"
+import { AppServer } from "./server"
 
-const AuthController : authController = new authController()
+const authCtl: authController = new authController()
+const authRoute: routeInterface = new auth(authCtl)
 
-//const authRoute: auth = new auth(AuthController)
-const indexRoutes: IndexRoutes = new IndexRoutes() 
-const appServer: AppServer = new AppServer(indexRoutes)
-
+const appServer: AppServer = new AppServer(authRoute)
 appServer.start()

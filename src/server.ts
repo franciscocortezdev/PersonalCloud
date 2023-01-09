@@ -1,15 +1,15 @@
 import express, { Application } from "express"
 import "dotenv/config"
 import cors from "cors"
-import { IndexRoutes } from "./routes"
+import { routeInterface } from "./interfaces/routeInterface"
 
 export class AppServer {
   PORT = process.env.PORT
   app: Application = express()
-  indexRoutes: IndexRoutes
+  authRoutes: routeInterface
 
-  constructor(routes: IndexRoutes){
-    this.indexRoutes = routes
+  constructor(authRoutes: routeInterface){
+    this.authRoutes = authRoutes
   }
 
   config() {
@@ -26,7 +26,7 @@ export class AppServer {
   }
 
   private routes() {
-
-    this.app.use("/", this.indexRoutes.getRoutes())
+    this.app.use("/auth", this.authRoutes.getRoutes())
+    
   }
 }
