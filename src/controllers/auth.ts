@@ -1,14 +1,11 @@
-import { Request, Response } from "express";
+import { Request, Response } from "express"
 
-export class authController{
-
-  registerCtl(req:Request, res:Response){
-    res.send('Register')
+export class authController {
+  registerCtl(req: Request, res: Response) {
+    res.send("Register")
   }
 
-  loginCtl(req:Request, res:Response){
-    res.send('login')
+  loginCtl(req: Request, res: Response) {
+    res.send("login")
   }
-
-
 }
