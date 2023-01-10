@@ -3,6 +3,7 @@ import "dotenv/config"
 import cors from "cors"
 import { routeInterface } from "./interfaces/routeInterface"
 
+
 export class AppServer {
   PORT = process.env.PORT
   app: Application = express()
