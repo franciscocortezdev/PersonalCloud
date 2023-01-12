@@ -1,7 +1,7 @@
 import "dotenv/config"
 import { Sequelize } from 'sequelize';
 
-class DBConnection{
+export class DBConnection{
 
   DB_URI: string
   sequelize: Sequelize
