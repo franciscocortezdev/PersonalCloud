@@ -1,7 +1,7 @@
 import "dotenv/config"
 import { Sequelize } from "sequelize"
 
-export class DBConnection {
+class DBConnection {
   DB_URI: string
   sequelize: Sequelize
   constructor() {
@@ -18,3 +18,5 @@ export class DBConnection {
     }
   }
 }
+
+export default new DBConnection()

@@ -2,7 +2,7 @@ import express, { Application } from "express"
 import "dotenv/config"
 import cors from "cors"
 import { routeInterface } from "./interfaces/routeInterface"
-
+import dbConexion from "./config/dbConexion"
 
 export class AppServer {
   PORT = process.env.PORT
@@ -11,6 +11,8 @@ export class AppServer {
 
   constructor(authRoutes: routeInterface){
     this.authRoutes = authRoutes
+    dbConexion.connect()
+
   }
 
   config() {
