@@ -1,8 +1,7 @@
-import {Sequelize,  Model, DataTypes } from 'sequelize';
+import {  Model, DataTypes } from 'sequelize';
+import dbConexion from '../config/dbConexion';
 
-
-const sequelize = new Sequelize();
-
+const sequelize = dbConexion.sequelize
 
 class UserModel extends Model{
   
