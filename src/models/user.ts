@@ -3,7 +3,7 @@ import dbConexion from '../config/dbConexion';
 
 const sequelize = dbConexion.sequelize
 
-class UserModel extends Model{
+export class UserModel extends Model{
   
   declare id: number;
 
@@ -57,9 +57,9 @@ UserModel.init({
   }
 },
   {
+    modelName:'UserModel',
     tableName: 'users',
     sequelize, 
   })
 
 
- 
