@@ -1,15 +1,14 @@
-import "dotenv/config"
 import { Sequelize } from "sequelize"
 
-class DBConnection {
-  DB_URI: string
+
+class dbConexion {
   sequelize: Sequelize
-  constructor() {
-    this.DB_URI = process.env.DB_URI!
-    this.sequelize = new Sequelize(this.DB_URI)
+
+  constructor(){
+    this.sequelize = new Sequelize(`${process.env.DB_URI}`)
   }
 
-  async connect() {
+  async connection() {
     try {
       await this.sequelize.authenticate()
       console.log("Connection has been established successfully.")
@@ -19,4 +18,4 @@ class DBConnection {
   }
 }
 
-export default new DBConnection()
+export default new dbConexion()
