@@ -3,7 +3,7 @@ import { Response } from "express"
 
 class handleError {
 
-  handleError = ( res: Response, errorSend: string | object, code: number = 500 ) => {
+  sendError = ( res: Response, errorSend: string | object, code: number = 500 ) => {
     res.status(code)
     res.send({ error: errorSend })
   }
