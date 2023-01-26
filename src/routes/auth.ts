@@ -1,23 +1,15 @@
 import { Router } from "express"
-import { authController } from "../controllers/auth"
-
-export class auth {
+import authCtl from "../controllers/auth"
+class auth {
   router = Router()
-  authCtl: authController
 
-  constructor(authController: authController) {
-    this.authCtl = authController
+  public Routes() {
+    this.router.post("/login", authCtl.loginCtl)
 
-  }
-
-  getRoutes() {
-
-    const authctl: authController = new authController()
-
-    this.router.get("/login", authctl.loginCtl)
-
-    this.router.get("/register", authctl.registerCtl)
+    this.router.post("/register", authCtl.registerCtl)
 
     return this.router
   }
 }
+
+export default new auth()
