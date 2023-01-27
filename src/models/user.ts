@@ -17,11 +17,9 @@ export const UserModel = dbConexion.sequelize.define('users',{
   },
   email: {
     type: DataTypes.STRING,
+    unique: true
   },
-  pass: {
-    type: DataTypes.STRING,
-  },
-  directory: {
+  password: {
     type: DataTypes.STRING,
   },
   createdAt: {

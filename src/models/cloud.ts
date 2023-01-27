@@ -1,7 +1,8 @@
 import { DataTypes } from "sequelize"
-import { sequelize } from "../config/dbConexion"
+import dbConexion from '../config/dbConexion';
 
-export const CloudModel = sequelize.define("clouds", {
+
+export const CloudModel = dbConexion.sequelize.define("clouds", {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
