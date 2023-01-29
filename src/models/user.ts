@@ -4,15 +4,15 @@ import dbConexion from '../config/dbConexion';
 
 
 export const UserModel = dbConexion.sequelize.define('users',{
-    id: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
-    primaryKey: true,
+  id: {
+  type: DataTypes.INTEGER,
+  autoIncrement: true,
+  primaryKey: true,
   },
-  nombre: {
+  name: {
     type: DataTypes.STRING,
   },
-  apellido: {
+  lastName: {
     type: DataTypes.STRING,
   },
   email: {
@@ -20,6 +20,9 @@ export const UserModel = dbConexion.sequelize.define('users',{
     unique: true
   },
   password: {
+    type: DataTypes.STRING,
+  },
+  cloudPath:{
     type: DataTypes.STRING,
   },
   createdAt: {
