@@ -12,16 +12,19 @@ class authController {
       const response = await authService.FindUser(body.email)
       if (!response) return handleError.sendError(res, "ERROR_USER_NOT_FOUND")
 
-      const passDecrypt = await handleBcrypt.decrypt(body.pass, response.pass)
+      const passDecrypt = await handleBcrypt.decrypt(
+        body.password,
+        response.password
+      )
       if (!passDecrypt) return handleError.sendError(res, "ERROR_PASSWORD")
 
       const toke = handleJWT.generateToken({
         email: response.email,
-        pass: response.pass,
+        password: response.password,
       })
 
       const user = {
-        user: response.nombre,
+        user: response.name,
         email: response.email,
       }
       res.send({
@@ -29,8 +32,6 @@ class authController {
         data: user,
       })
     } catch (error) {
-      console.log("error", error)
-
       handleError.sendError(res, "ERROR_LOGIN")
     }
   }
@@ -43,16 +44,16 @@ class authController {
       if (userExist)
         return handleError.sendError(res, "ERROR_USER_ALREADY_EXISTS")
 
-      const passEncrypt = await handleBcrypt.encrypt(body.pass)
+      const passEncrypt = await handleBcrypt.encrypt(body.password)
 
       const response = await authService.CreateUser({
         ...body,
-        pass: passEncrypt,
+        password: passEncrypt,
       })
       res.send({ data: response })
     } catch (error) {
-      console.log("error", error)
-      handleError.sendError(res, "ERROR_REGISTER")
+
+      handleError.sendError(res, "ERROR_REGISTER_USER")
     }
   }
 }
