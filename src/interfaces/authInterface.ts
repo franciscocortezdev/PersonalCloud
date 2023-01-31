@@ -1,9 +1,10 @@
 export interface Icredentials {
   email: string
-  pass: string
+  password: string
 }
 
 export interface Iuser extends Icredentials{
-  nombre: string
-  apellido: string,
+  name: string
+  lastName: string,
+  cloudPath: string
 }
