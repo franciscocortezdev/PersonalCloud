@@ -8,7 +8,13 @@ class authService {
   }
 
   CreateUser = async (user: Iuser) => {
-    const responseInsert = await UserModel.create({ ...user })
+    const responseInsert = await UserModel.create({
+        name: user.name,
+        lastName: user.lastName,
+        email: user.email,
+        password: user.password,
+        cloudPath: user.cloudPath
+     })
     return responseInsert
   }
 }
